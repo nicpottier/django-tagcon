@@ -189,7 +189,60 @@ This is the same as specifying::
         )
 
 
-Arg
-===
+Argument Types
+==============
 
-To be written.  (See ``Arg``'s docstring for now.)
+You can use various Arg subclasses for your template which provide differing levels of parsing and validation.
+
+Arg
+---
+
+This is the base class for all other argument types.
+
+``name`` (default first argument, uses the keyword if not specified)
+This is the name which the value will be stuffed into in ``self.args``.  It is *not* the keyword name used in the tag itself.
+
+``required`` (defaults to False)
+Whether the argument is required.  Positional arguments are implicitely required.
+
+``default`` (defaults to None)
+The default value for this argument if it is not specified.
+
+``resolve`` (defaults to true)
+Whether to resolve the argument as a template variable if it is not a literal. (surrounded by single or double quotes).  You will have to call ``self.resolve(context)`` in your ``render`` for this to take effect.
+
+``multi`` (defaults to False)
+Whether the argument's value may consist of multiple comma-seperated items (which can be resolved or not depending on the value of ``resolve``)
+
+``flat`` (defaults to False)
+Denotes a keyword argument that does *not* have an associated value.  Its value is ``True`` if the keyword is given, and ``False`` otherwise.
+
+IntegerArg
+----------
+
+Validates that the argument is an integer, otherwise throws a template error.
+
+StringArg
+---------
+
+Validates that the argument is a ``string`` instance, otherwise throws a template error.
+
+DateTimeArg
+-----------
+
+Validates that the argument is a ``datetime`` instance, otherwise throws a template error.
+
+DateArg
+-------
+
+Validates that the argument is a ``date`` instance, otherwise throws a template error.
+
+TimeArg
+-------
+
+Validates that the argument is a ``time`` instance, otherwise throws a template error.
+
+ModelInstanceArg
+----------------
+
+This `Arg` subclass validates that the passed in value is an instance of the specified ``Model`` class.  It takes a single named argument, ``model`` which should be the ``Model`` class you want to validate against.  An error will be thrown if the argument value is not an instance of this ``Model``.
