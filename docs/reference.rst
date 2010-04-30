@@ -199,23 +199,43 @@ Arg
 
 This is the base class for all other argument types.
 
+Constructor Arguments
+~~~~~~~~~~~~~~~~~~~~~
+
 ``name`` (default first argument, uses the keyword if not specified)
+
 This is the name which the value will be stuffed into in ``self.args``.  It is *not* the keyword name used in the tag itself.
 
 ``required`` (defaults to False)
+
 Whether the argument is required.  Positional arguments are implicitely required.
 
 ``default`` (defaults to None)
+
 The default value for this argument if it is not specified.
 
 ``resolve`` (defaults to true)
+
 Whether to resolve the argument as a template variable if it is not a literal. (surrounded by single or double quotes).  You will have to call ``self.resolve(context)`` in your ``render`` for this to take effect.
 
 ``multi`` (defaults to False)
+
 Whether the argument's value may consist of multiple comma-seperated items (which can be resolved or not depending on the value of ``resolve``)
 
 ``flat`` (defaults to False)
+
 Denotes a keyword argument that does *not* have an associated value.  Its value is ``True`` if the keyword is given, and ``False`` otherwise.
+
+Example
+~~~~~~~
+
+An example in usage::
+
+	class EverythingTag(tagcon.TemplateTag):
+	      limit = tagcon.Arg(required=True)
+	      offset = tagcon.Arg(default=5)
+	      output = tagcon.Arg(resolve=True, multi=True)
+	      encode = tagcon.Arg(flat=True)
 
 IntegerArg
 ----------
