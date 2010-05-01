@@ -194,12 +194,9 @@ Argument Types
 Arg and its subclasses provide various other levels of parsing and validation.
 
 Arg
-===
+---
 
-This is the base class for all other argument types.
-
-Constructor Arguments
----------------------
+This is the base class for all other argument types, behavior can be defined via the following constructor arguments.
 
 name (default first argument, uses the keyword if not specified)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -269,10 +266,10 @@ Which should be the ``Model`` class you want to validate against.  An error will
 Full Example
 ============
 
-This example provides a template tag which outputs a tweaked version of the instance name passed in.  It demonstrates using the various Arg types to have tagcon do the hard work for you.
+This example provides a template tag which outputs a tweaked version of the instance name passed in.  It demonstrates using the various Arg types to have tagcon do the hard work for you::
 
-       class TweakName(tagcon.TemplateTag):
-       """Proves the tweak_name template tag, which outputs a
+     class TweakName(tagcon.TemplateTag):
+        """Proves the tweak_name template tag, which outputs a
 	  slightly modified version of the NamedModel instance passed in.
 	  {% tweak_name instance [offset=0] [limit=1] [reverse] %} """
 	    
