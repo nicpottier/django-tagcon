@@ -223,7 +223,7 @@ multi (defaults to False)
 
 Whether the argument's value may consist of multiple comma-seperated items (which can be resolved or not depending on the value of ``resolve``)
 
-flat (defaults to False)
+flag (defaults to False)
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Denotes a keyword argument that does *not* have an associated value.  Its value is ``True`` if the keyword is given, and ``False`` otherwise.
@@ -256,7 +256,7 @@ Validates that the argument is a ``time`` instance, otherwise throws a template 
 ModelInstanceArg
 ----------------
 
-This ``Arg`` subclass validates that the passed in value is an instance of the specified ``Model`` class.  It takes a single named argument, ``model``.
+This ``Arg`` subclass validates that the passed in value is an instance of the specified ``Model`` class.  It takes a single named argument, ``model``.  Note that ModelInstanceArgs cannot take multiple values using ``multi``.
 
 model (required)
 ~~~~~~~~~~~~~~~~
