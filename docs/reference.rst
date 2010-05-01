@@ -261,7 +261,7 @@ This ``Arg`` subclass validates that the passed in value is an instance of the s
 model (required)
 ~~~~~~~~~~~~~~~~
 
-Which should be the ``Model`` class you want to validate against.  An error will be thrown if the argument value is not an instance of this ``Model``.
+Argument is the ``Model`` class you want to validate against.  An error will be thrown if the argument value is not an instance of this ``Model`` class.
 
 Full Example
 ============
@@ -281,7 +281,7 @@ This example provides a template tag which outputs a tweaked version of the inst
         def render(self, context):
           self.resolve(context)
 
-           name = self.args.instance.title
+           name = self.args.instance.name
 
            # reverse if appropriate
            if self.args.reverse:
@@ -296,3 +296,13 @@ This example provides a template tag which outputs a tweaked version of the inst
 
            # return the tweaked name
            return name
+
+Example usages::
+
+	{% tweak_name inst limit 5 %}
+	
+	{% tweak_name inst offset 1 %}
+	
+	{% tweak_name inst reverse %}
+
+	{% tweak_name inst offset 1 limit 5 reverse %}
