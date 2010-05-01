@@ -269,9 +269,11 @@ Full Example
 This example provides a template tag which outputs a tweaked version of the instance name passed in.  It demonstrates using the various Arg types to have tagcon do the hard work for you::
 
      class TweakName(tagcon.TemplateTag):
-        """Provides the tweak_name template tag, which outputs a
-	  slightly modified version of the NamedModel instance passed in.
-	  {% tweak_name instance [offset=0] [limit=1] [reverse] %} """
+        """
+	Provides the tweak_name template tag, which outputs a
+	slightly modified version of the NamedModel instance passed in.
+	{% tweak_name instance [offset=0] [limit=10] [reverse] %}
+	"""
 	    
         _ = (tagcon.ModelInstanceArg('instance', model=NamedModel))
 	offset = tagcon.IntegerArg(default=0)
